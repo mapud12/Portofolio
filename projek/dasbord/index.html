@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sidebar (Sticky Navbar) -->
+        <nav class="sidebar">
+            <h2>Admin Panel</h2>
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Users</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+
+            <!-- Profile Section at the Bottom -->
+            <div class="profile-section">
+                <img src="20241014_161528_S20FE_GLib29.11.Mr_ART.jpg" alt="Profile Picture" class="profile-pic-sidebar">
+                <div class="profile-info">
+                    <h3>Mahfud Al Hayat</h3>
+                    <p>Administrator</p>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header>
+                <h1>Dashboard Overview</h1>
+            </header>
+
+            <!-- Content -->
+            <section class="content">
+                <div class="cards">
+                    <div class="card card-users">
+                        <h3>Total Users</h3>
+                        <p>1500</p>
+                    </div>
+                    <div class="card card-active">
+                        <h3>Active Users</h3>
+                        <p>1200</p>
+                    </div>
+                    <div class="card card-pending">
+                        <h3>Pending Requests</h3>
+                        <p>10</p>
+                    </div>
+                </div>
+
+                <!-- Bar Chart -->
+                <div class="chart-container">
+                    <h3>Monthly User Registrations</h3>
+                    <canvas id="barChart"></canvas>
+                </div>
+
+                <!-- Line Chart -->
+                <div class="chart-container">
+                    <h3>User Growth Over Time</h3>
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Bar chart using Chart.js
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        const barChart = new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Users Registered',
+                    data: [300, 450, 200, 500, 350, 600],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(255, 206, 86, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 159, 64, 0.5)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Line chart using Chart.js
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        const lineChart = new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Active Users Over Time',
+                    data: [1000, 1150, 1250, 1400, 1600, 1700],
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
